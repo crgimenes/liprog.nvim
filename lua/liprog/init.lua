@@ -18,5 +18,11 @@ M.get_line = function(line_number)
     return line
 end
 
+-- get line count in buffer
+M.get_line_count = function()
+    local line_count = vim.api.nvim_buf_line_count(0)
+    return line_count
+end
+
 
 return M
