@@ -11,11 +11,12 @@ if g.loaded_liprog then
 end
 g.loaded_liprog = true
 
-local liprog = require "liprog"
+-- run code block
+vim.cmd [[command! -nargs=0 LiprogRun :lua require('liprog').run_if_lua()]]
 
 -- set keymap
 vim.api.nvim_set_keymap(
     "n",
     "<leader>lp",
-    "<cmd>lua require'liprog'.run_if_lua()<cr>",
+    "<cmd>lua require('liprog').run_if_lua()<cr>",
     { noremap = true, silent = true })

@@ -19,11 +19,11 @@ vim.api.nvim_command("echo 'Hello, world!'")
 basic return
 
 ```lua
-return 1+1
+return 1+1+1
 ```
 
 ```result
-2
+3
 ```
 
 end of file
