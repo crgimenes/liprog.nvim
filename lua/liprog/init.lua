@@ -50,5 +50,16 @@ M.find_code_end = function(line_number)
     return nil
 end
 
+-- get code block and language where cursor is located
+M.get_code_block = function()
+    local line_number = M.get_current_line_number()
+    local code_start = M.find_code_start(line_number)
+    local code_end = M.find_code_end(line_number)
+    if code_start and code_end then
+        local code_block = vim.api.nvim_buf_get_lines(0, code_start.line, code_end.line, false)
+        return { ["code_block"] = code_block, ["language"] = code_start.language }
+    end
+    return nil
+end
 
 return M
