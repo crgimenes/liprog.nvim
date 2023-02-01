@@ -24,5 +24,18 @@ M.get_line_count = function()
     return line_count
 end
 
+-- find code start
+M.find_code_start = function(line_number)
+    local line = M.get_line(line_number)
+    local language = string.match(line, "```(.*)")
+    if language then
+        return { ["line"] = line_number, ["language"] = language }
+    end
+    if line_number > 1 then
+        return M.find_code_start(line_number - 1)
+    end
+    return nil
+end
+
 
 return M
